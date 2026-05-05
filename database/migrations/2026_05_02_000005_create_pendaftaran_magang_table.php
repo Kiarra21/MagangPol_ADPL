@@ -8,12 +8,12 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('internship_applications', function (Blueprint $table) {
+        Schema::create('pendaftaran_magang', function (Blueprint $table) {
             $table->id();
             $table->string('application_number', 50)->unique();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('period_id')->constrained('internship_periods')->cascadeOnDelete();
-            $table->foreignId('assigned_division_id')->nullable()->constrained('internship_divisions')->nullOnDelete();
+            $table->foreignId('period_id')->constrained('periode_magang')->cascadeOnDelete();
+            $table->foreignId('assigned_division_id')->nullable()->constrained('divisi_magang')->nullOnDelete();
             $table->string('institution_name');
             $table->string('study_program')->nullable();
             $table->enum('submission_status', ['draft', 'submitted', 'admin_review', 'final_review', 'approved', 'rejected'])->default('draft')->index();
@@ -33,6 +33,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('internship_applications');
+        Schema::dropIfExists('pendaftaran_magang');
     }
 };

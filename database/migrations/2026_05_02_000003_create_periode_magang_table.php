@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('internship_periods', function (Blueprint $table) {
+        Schema::create('periode_magang', function (Blueprint $table) {
             $table->id();
             $table->string('period_code', 50)->unique();
             $table->string('name');
@@ -31,6 +31,6 @@ return new class extends Migration
     public function down(): void
     {
         // drop only periods here; other tables are handled in their own migrations
-        Schema::dropIfExists('internship_periods');
+        Schema::dropIfExists('periode_magang');
     }
 };

@@ -8,9 +8,9 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('internship_application_documents', function (Blueprint $table) {
+        Schema::create('dokumen_pendaftaran_magang', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('application_id')->constrained('internship_applications')->cascadeOnDelete();
+            $table->foreignId('application_id')->constrained('pendaftaran_magang')->cascadeOnDelete();
             $table->enum('document_type', ['submission_letter', 'proposal', 'other']);
             $table->string('file_path');
             $table->string('original_name');
@@ -24,6 +24,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('internship_application_documents');
+        Schema::dropIfExists('dokumen_pendaftaran_magang');
     }
 };
