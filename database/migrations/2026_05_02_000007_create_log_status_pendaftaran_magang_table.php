@@ -12,9 +12,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('application_id')->constrained('pendaftaran_magang')->cascadeOnDelete();
             $table->enum('stage', ['submission', 'admin', 'final']);
-            $table->enum('status', ['draft', 'submitted', 'approved', 'rejected', 'revision']);
+            $table->enum('status', ['draft', 'submitted', 'approved', 'rejected']);
             $table->foreignId('acted_by_user_id')->nullable()->constrained('users')->nullOnDelete();
-            $table->text('notes')->nullable();
             $table->timestamps();
 
             $table->index(['application_id', 'stage', 'status'], 'iasl_app_stage_status_idx');
