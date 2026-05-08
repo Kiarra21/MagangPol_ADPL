@@ -14,6 +14,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('period_id')->constrained('internship_periods')->cascadeOnDelete();
             $table->foreignId('assigned_division_id')->nullable()->constrained('internship_divisions')->nullOnDelete();
+            $table->string('proposal_file')->nullable();
+            $table->string('request_letter')->nullable();
             $table->enum('submission_status', ['draft', 'submitted', 'admin_review', 'final_review', 'approved', 'rejected'])->default('draft')->index();
             $table->enum('status_admin', ['pending', 'approved', 'rejected'])->default('pending')->index();
             $table->enum('status_final', ['pending', 'approved', 'rejected'])->default('pending')->index();
