@@ -8,9 +8,9 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('log_status_pendaftaran_magang', function (Blueprint $table) {
+        Schema::create('internship_application_status_logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('application_id')->constrained('pendaftaran_magang')->cascadeOnDelete();
+            $table->foreignId('application_id')->constrained('internship_applications')->cascadeOnDelete();
             $table->enum('stage', ['submission', 'admin', 'final']);
             $table->enum('status', ['draft', 'submitted', 'approved', 'rejected']);
             $table->foreignId('acted_by_user_id')->nullable()->constrained('users')->nullOnDelete();
@@ -23,6 +23,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('log_status_pendaftaran_magang');
+        Schema::dropIfExists('internship_application_status_logs');
     }
 };

@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('identity_number', 30)->nullable()->unique();
             $table->string('phone', 20)->nullable();
             $table->text('address')->nullable();
-            $table->string('institution')->nullable()->index();
+            $table->string('institution_name')->nullable()->index();
+            $table->string('study_program')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

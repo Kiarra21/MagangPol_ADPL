@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('periode_magang', function (Blueprint $table) {
+        Schema::create('internship_periods', function (Blueprint $table) {
             $table->id();
             $table->string('period_code', 50)->unique();
             $table->string('name');
@@ -22,7 +22,6 @@ return new class extends Migration
             $table->boolean('is_active')->default(false)->index();
             $table->timestamps();
         });
-        // other related tables are split into separate migrations for clarity and maintainability
     }
 
     /**
@@ -30,7 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        // drop only periods here; other tables are handled in their own migrations
-        Schema::dropIfExists('periode_magang');
+        Schema::dropIfExists('internship_periods');
     }
 };
